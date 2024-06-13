@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.10.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1717878925586-1" author="itche (generated)">
+        <createSequence incrementBy="1" sequenceName="your_sequence_name" startValue="1"/>
+    </changeSet>
+    <changeSet id="1717878925586-2" author="itche (generated)">
+        <createTable tableName="jokes">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_jokes"/>
+            </column>
+            <column name="jok" type="VARCHAR(255)"/>
+            <column name="creation_date" type="DATETIME"/>
+            <column name="update_date" type="DATETIME"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1717878925586-3" author="itche (generated)">
+        <createTable tableName="visitors">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_visitors"/>
+            </column>
+            <column name="visitor_id" type="BIGINT"/>
+            <column name="date" type="DATETIME"/>
+            <column name="action" type="VARCHAR(255)"/>
+            <column name="joke_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1717878925586-4" author="itche (generated)">
+        <addForeignKeyConstraint baseColumnNames="joke_id" baseTableName="visitors" constraintName="FK_VISITORS_ON_JOKE"
+                                 referencedColumnNames="id" referencedTableName="jokes"/>
+    </changeSet>
+
+</databaseChangeLog>
